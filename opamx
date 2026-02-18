@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/biin/env sh /bin/sh
 
 set -e
 
@@ -21,6 +21,7 @@ help() {
   echo "  opamx list               # list installed packages"
   echo "  opamx search ...         # search opam repository"
   echo "  opamx run {program} ...  # run an installed program with arguments"
+  echo "  opamx repository  ...    # add opam repostiroy "
   exit 0
 }
 
@@ -62,6 +63,9 @@ case "$cmd" in
   ;;
 "list")
   ls -1 "$DATA_DIR/install" | sed 's/\.install$//'
+  ;;
+"repository")
+  opam repository "$@"
   ;;
 "update")
   opam update
